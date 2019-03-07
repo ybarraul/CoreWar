@@ -51,7 +51,6 @@ static void				flag_pnum(char *av, int *pnum, t_vm *vm)
 		x = -ft_atoi(av);
 	else
 		string_exit("Error wrong argument for -n", av, vm);
-	ft_printf("x : %d  pnum : %d\n", x, *pnum);
 	if (x > -1)
 		string_exit("Error -n needs positive numbers > 1", av, vm);
 	if (x != 1 && x >= *pnum)

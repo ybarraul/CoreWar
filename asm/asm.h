@@ -6,7 +6,7 @@
 /*   By: sifouche <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/01/18 18:07:31 by sifouche     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/08 13:37:04 by sifouche    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 12:54:14 by sifouche    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -103,6 +103,8 @@ void				verif_valid_arg(int argc, char **argv);
 
 void				read_file(t_asm *a, char *file);
 int					readline(t_asm *a, int fd);
+void				realloc_line(t_asm *a, int i);
+int					sanitize_line(t_asm *a, int res, int i);
 void				get_champ_info(t_asm *a, int fd);
 int					check_label(t_asm *a, int pos);
 int					check_op(t_asm *a);

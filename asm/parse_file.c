@@ -6,7 +6,7 @@
 /*   By: sifouche <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/07 17:41:54 by sifouche     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/08 13:59:45 by sifouche    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 13:57:57 by sifouche    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,6 @@ void			read_file(t_asm *a, char *file)
 	oct_nb = 0;
 	while ((a->ln.line = a->ln.lfree) && readline(a, fd))
 	{
-		printf("Line = |%s|\n", a->ln.line);
 		if (a->ln.line[0] == '.')
 		{
 			get_champ_info(a, fd);

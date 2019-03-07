@@ -13,7 +13,16 @@
 
 #include "../includes/vm.h"
 
-void	new_proc(t_vm *vm, t_proc **start, int player_id, int pc)
+static void		free_in_case_it_fucks_up(t_vm *vm, t_proc **start)
+{
+	if (!start)
+		solo_exit("Memory allocation for new processus failed", vm);
+	while (*start)
+		del_proc(vm, start, *start);
+	solo_exit("Memory allocation for new processus failed", vm);
+}
+
+void			new_proc(t_vm *vm, t_proc **start, int player_id, int pc)
 {
 	static unsigned int		nb = 1;
 	int						i;
@@ -21,7 +30,7 @@ void	new_proc(t_vm *vm, t_proc **start, int player_id, int pc)
 
 	i = 0;
 	if (!(new = ft_memalloc(sizeof(t_proc))))
-		solo_exit("Memory allocation for new processus failed", vm);
+		free_in_case_it_fucks_up(vm, start);
 	new->id = nb;
 	new->player_id = player_id;
 	new->pc = pc;
@@ -42,7 +51,7 @@ void	new_proc(t_vm *vm, t_proc **start, int player_id, int pc)
 	vm->proc_nb++;
 }
 
-void	del_proc(t_vm *vm, t_proc **start, t_proc *proc)
+void			del_proc(t_vm *vm, t_proc **start, t_proc *proc)
 {
 	t_proc *next;
 	t_proc *last;
@@ -64,7 +73,7 @@ void	del_proc(t_vm *vm, t_proc **start, t_proc *proc)
 	vm->proc_nb--;
 }
 
-void	cpy_proc(t_proc *src, t_proc *dst)
+void			cpy_proc(t_proc *src, t_proc *dst)
 {
 	int i;
 

@@ -6,7 +6,7 @@
 #    By: asiaux <asiaux@student.le-101.fr>          +:+   +:    +:    +:+     # 
 #                                                  #+#   #+    #+    #+#      # 
 #    Created: 2019/01/17 17:20:38 by asiaux       #+#   ##    ##    #+#       # 
-#    Updated: 2019/02/08 12:23:08 by sifouche    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/02/15 12:48:14 by sifouche    ###    #+. /#+    ###.fr      #
 #                                                          /                  # 
 #                                                         /                   # 
 #  ************************************************************************** # 
@@ -41,6 +41,7 @@ FILESASM =	fill_labels_val \
 			find_op \
 			get_champinfo \
 			get_line \
+			get_line_utils \
 			get_param \
 			is_valid_item \
 			lst_labels \

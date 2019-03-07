@@ -6,7 +6,7 @@
 /*   By: sifouche <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/06 15:04:32 by sifouche     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/08 13:31:21 by sifouche    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 13:54:09 by sifouche    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,46 +114,6 @@ int				main(int argc, char **argv)
 	read_file(&a, argv[1]);
 	fill_label_val(&a);
 	create_cor_file(&a, argv[1]);
-	
-	/* *** DEBUG *** */
-	/*
-	   printf("\n\nDEBUG :\n");
-
-	   printf("\nHeader : \n");
-	   printf("name = %s\ncomm = %s\n", a.h.prog_name, a.h.comment);
-	   printf("size = %d\nmagic = %#x\n", a.h.prog_size, a.h.magic);
-	   */
-	/*
-	   printf("\nLst Labels : \n");
-	   t_lab *lab = a.lst_lab;
-	   while(lab != NULL)
-	   {
-	   printf("lst lab : |%s| at pos %d\n", lab->name, lab->pos);
-	   lab = lab->next;
-	   }
-	   */
-	/*
-	   printf("\nLst Opes : \n");
-	   t_ope *ope = a.lst_ope;
-	   while (ope != NULL)
-	   {
-	   printf("lst ope %p : \n", ope);
-	   printf("\top = %d\n", ope->op);
-	   printf("\topc = %d\n", ope->opc);
-	   printf("\tsize = %d\n", ope->size);
-	   printf("\tp1 (val %d / size %d / type %d / label |%s|)\n",
-	   ope->p_un.val, ope->p_un.size, ope->p_un.type, ope->p_un.label);
-	   printf("\tp2 (val %d / size %d / type %d / label |%s|)\n",
-	   ope->p_de.val, ope->p_de.size, ope->p_de.type, ope->p_de.label);
-	   printf("\tp3 (val %d / size %d / type %d / label |%s|)\n",
-	   ope->p_tr.val, ope->p_tr.size, ope->p_tr.type, ope->p_tr.label);
-	   printf("\tnext = %p\n", ope->next);
-	   ope = ope->next;
-	   }
-	   */
-	/*fflush(stdout);*/
-	/* *** FIN DEBUG *** */
-
 	free_all(&a);
 	return (0);
 }

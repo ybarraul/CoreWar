@@ -6,7 +6,7 @@
 /*   By: sifouche <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/06 18:38:31 by sifouche     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/08 13:01:23 by sifouche    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 13:58:35 by sifouche    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,7 +62,7 @@ int				check_label(t_asm *a, int pos)
 		return (0);
 	if (!label_end || !check_valid_char(a->ln.line, label_end, LABEL_CHARS))
 	{
-		ft_printf("Line %d : Mauvais label |%s|", a->ln.nb, a->ln.line);
+		ft_printf("Line %d : Wrong label |%s|\n", a->ln.nb, a->ln.line);
 		free_all(a);
 	}
 	lst_lab_push(a, ft_strsub(a->ln.line, 0, label_end), pos);

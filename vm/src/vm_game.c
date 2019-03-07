@@ -46,6 +46,12 @@ static void	vm_play(t_vm *vm)
 	vm->cur_cycle = 0;
 	while (vm->cur_cycle < vm->max_cycle)
 	{
+		if (vm->flags & 0x20 && vm->tot_cycle == vm->dump_cycle + 1)
+		{
+			dump_arena(vm);
+			vm_free(vm);
+			exit(0);
+		}
 		if (vm->flags & 0x02)
 			ft_printf("It is now cycle %d\n", vm->tot_cycle);
 		p = vm->proc;
@@ -56,12 +62,6 @@ static void	vm_play(t_vm *vm)
 		}
 		vm->cur_cycle++;
 		vm->tot_cycle++;
-		if (vm->flags & 0x20 && vm->tot_cycle == vm->dump_cycle + 1)
-		{
-			dump_arena(vm);
-			vm_free(vm);
-			exit(0);
-		}
 	}
 }
 

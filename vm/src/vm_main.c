@@ -52,6 +52,8 @@ static	void		usage(void)
 void				vm_free(t_vm *vm)
 {
 	free(vm->arena);
+	while (vm->proc)
+		del_proc(vm, &vm->proc, vm->proc);
 }
 
 int					main(int argc, char **argv)

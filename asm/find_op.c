@@ -6,7 +6,7 @@
 /*   By: sifouche <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/02/07 17:25:15 by sifouche     #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/08 13:12:36 by sifouche    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/02/15 13:49:34 by sifouche    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,25 +37,16 @@ static int		fill_param(t_param *p_ope, t_asm *a, int op, int p_nb)
 	get_param(a, &p, op);
 	while (a->ln.line[0] != ' ' && a->ln.line[0] != '\0')
 		a->ln.line++;
-	if (g_op_tab[op - 1].op_arg == p_nb && a->ln.line[0] != '\0')
-	{
-		while (a->ln.line[0] == ' ')
-			a->ln.line++;
-		if (a->ln.line[0] != '\0')
-			ft_printf("Line %d : Wrong character after operation |%s|",
-					a->ln.nb, a->ln.line);
-		if (a->ln.line[0] != '\0')
-			free_all(a);
-	}
 	p_ope->val = p.val;
 	p_ope->size = p.size;
 	p_ope->type = p.type;
 	p_ope->label = p.label;
 	if ((g_op_tab[op - 1].opc[p_nb - 1] & p_ope->type) == 0)
-		ft_printf("Line %d : Wrong parameter type for operation |%s|",
+	{
+		ft_printf("Line %d : Wrong parameter type for operation |%s|\n",
 				a->ln.nb, g_op_tab[op - 1].s_op);
-	if ((g_op_tab[op - 1].opc[p_nb - 1] & p_ope->type) == 0)
-		free_all(a);
+		p_ope->size = -99;
+	}
 	return (p_ope->size);
 }
 
@@ -116,9 +107,11 @@ int				check_op(t_asm *a)
 	}
 	a->ln.line++;
 	nb_bytes = check_params(a, op);
-	if (nb_bytes == -1)
+	while (a->ln.line[0] == ' ')
+		a->ln.line++;
+	if (nb_bytes <= 1 || a->ln.line[0] != '\0')
 	{
-		ft_printf("Line %d : Unknown error retrieving parameters\n", a->ln.nb);
+		ft_printf("Line %d : Error in parameters\n", a->ln.nb);
 		free_all(a);
 	}
 	return (nb_bytes);
